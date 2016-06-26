@@ -30,7 +30,6 @@ void ResourceCache::OpenDatabase()
 	options.create_if_missing = true;
 
 	auto status = leveldb::DB::Open(options, m_cachePath + "/db/", &dbPointer);
-	assert(status.ok());
 
 	m_indexDatabase = std::unique_ptr<leveldb::DB>(dbPointer);
 	dbPointer = nullptr; // as the unique_ptr 'owns' it now
